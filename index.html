@@ -519,14 +519,88 @@
     cursor: pointer;
   }
 
-  /* ── HISTORY SCREEN ── */
+  /* ── PATTERN SCREEN ── */
   #screen-history {
-    padding-top: 72px;
-    padding-bottom: 60px;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0;
+  }
+
+  .pattern-hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 28px 60px;
+  }
+
+  .pattern-eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--warm-soft);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.2s forwards;
+  }
+
+  .pattern-hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.4s forwards;
+  }
+
+  .pattern-hero-title em {
+    font-style: italic;
+    color: var(--warm);
+  }
+
+  .pattern-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 0;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.6s forwards;
+  }
+
+  .pattern-scroll-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 48px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 1.2s forwards;
+  }
+
+  .pattern-reveal-wrap {
+    padding: 0 28px;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  /* Scroll reveal animation */
+  .reveal-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    padding: 32px 0 0;
+  }
+
+  .reveal-section.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .history-header {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   .history-title {
@@ -586,6 +660,205 @@
     font-style: italic;
     line-height: 1.6;
   }
+
+  /* ── PATTERN SCREEN ── */
+  .pattern-section {
+    margin-bottom: 24px;
+  }
+
+  .pattern-section-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .insight-card {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .insight-card.full {
+    grid-column: 1 / -1;
+  }
+
+  .insight-card.highlight {
+    border-color: var(--border);
+    background: var(--warm-glow);
+  }
+
+  .insight-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .insight-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--warm);
+    line-height: 1.2;
+  }
+
+  .insight-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  .cycle-bar-wrap {
+    margin-top: 10px;
+  }
+
+  .cycle-bar {
+    height: 4px;
+    background: var(--surface2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+
+  .cycle-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(to right, var(--warm-soft), var(--warm));
+    transition: width 0.8s ease;
+  }
+
+  .mood-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .mood-bar-label {
+    font-size: 12px;
+    color: var(--text-soft);
+    width: 64px;
+    flex-shrink: 0;
+  }
+
+  .mood-bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--surface2);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .mood-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: var(--warm);
+    transition: width 0.6s ease;
+  }
+
+  .mood-bar-count {
+    font-size: 11px;
+    color: var(--text-muted);
+    width: 20px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .pattern-chart-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  /* Export */
+  .export-wrap {
+    margin-bottom: 8px;
+  }
+
+  .export-btns {
+    display: flex;
+    gap: 10px;
+  }
+
+  .export-btn {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 16px 12px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s;
+  }
+
+  .export-btn:active {
+    border-color: var(--warm);
+    background: var(--warm-glow);
+    transform: scale(0.97);
+  }
+
+  .export-icon {
+    font-size: 20px;
+    color: var(--warm);
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .export-label {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+
+  .export-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--warm);
+    font-size: 13px;
+    padding: 10px 24px;
+    border-radius: 40px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 100;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+
 
   /* Bottom nav */
   .bottom-nav {
@@ -660,7 +933,166 @@
     50% { transform: scale(1.1); opacity: 1; }
   }
 
-  .breath-orb.loaded { opacity: 1; animation: breathe 4s ease-in-out infinite, fadeUp 0.8s ease 1.3s forwards; }
+  /* New element pulse for updates */
+  @keyframes newPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(196, 149, 106, 0); }
+    50% { box-shadow: 0 0 0 8px rgba(196, 149, 106, 0.18); }
+  }
+
+  .new-pulse {
+    animation: newPulse 1.8s ease-in-out infinite !important;
+    border-color: rgba(196, 149, 106, 0.4) !important;
+  }
+
+  /* Welcome screen — scrollable */
+  #screen-welcome {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0;
+  }
+
+  .welcome-hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 28px 60px;
+  }
+
+  .scroll-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    animation: fadeUp 0.8s ease 2s forwards;
+    opacity: 0;
+  }
+
+  .scroll-hint-line {
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(to bottom, transparent, var(--text-muted));
+  }
+
+  .scroll-hint-text {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .scroll-hint-arrow {
+    font-size: 14px;
+    color: var(--text-muted);
+    animation: bobDown 1.8s ease-in-out infinite;
+  }
+
+  @keyframes bobDown {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50% { transform: translateY(5px); opacity: 1; }
+  }
+
+  /* Recent entries section */
+  .recent-section {
+    padding: 0 28px;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .recent-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 32px 0 16px;
+  }
+
+  .recent-entry {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .recent-entry::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--warm-soft);
+    border-radius: 3px 0 0 3px;
+    opacity: 0.6;
+  }
+
+  .recent-entry-time {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .recent-entry-mood {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .recent-mood-icon { font-size: 22px; }
+
+  .recent-mood-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--text);
+    font-weight: 300;
+  }
+
+  .recent-mood-intensity {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-left: auto;
+  }
+
+  .recent-entry-feeling {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: var(--text-soft);
+    line-height: 1.65;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+
+  .recent-entry-focus {
+    font-size: 12px;
+    color: var(--warm-soft);
+    letter-spacing: 0.5px;
+  }
+
+  .recent-entry-focus span {
+    color: var(--warm);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+  }
+
+  .recent-divider {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    padding: 16px 0;
+    cursor: pointer;
+  }
+
+  .recent-divider:active { color: var(--warm); }
+
 </style>
 </head>
 <body>
@@ -675,7 +1107,9 @@
 
   <!-- WELCOME -->
   <div class="screen active" id="screen-welcome">
-    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+
+    <!-- Hero section — full viewport height -->
+    <div class="welcome-hero">
       <p class="welcome-time" id="welcome-time">Evening</p>
       <div class="breath-orb" id="breath-orb"></div>
       <h1 class="rewind-logo">Rewind</h1>
@@ -686,7 +1120,37 @@
       </div>
       <p class="welcome-question" id="welcome-question">How are you coming in<br>right now?</p>
       <button class="begin-btn" id="begin-btn" onclick="startCheckin()">Begin</button>
+      <div class="scroll-hint" id="scroll-hint" style="display:none;">
+        <div class="scroll-hint-line"></div>
+        <span class="scroll-hint-text">scroll to read back</span>
+        <div class="scroll-hint-arrow">↓</div>
+      </div>
     </div>
+
+    <!-- Recent entries revealed on scroll -->
+    <div class="recent-section" id="recent-section" style="display:none;">
+      <p class="recent-label">Recently</p>
+      <div id="recent-entries"></div>
+      <div style="height: 100px;"></div>
+    </div>
+
+  </div>
+
+  <!-- UPDATE CARD OVERLAY -->
+  <div id="update-overlay" style="display:none; position:fixed; inset:0; z-index:200; background:rgba(14,11,9,0.96); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); flex-direction:column; justify-content:center; align-items:center; padding:40px 32px; text-align:center;">
+    <div id="update-card-inner" style="opacity:0; transform:translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease;">
+      <p style="font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--warm-soft); margin-bottom:24px;">Rewind grew a little</p>
+      <h2 id="update-message" style="font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:300; color:var(--text); margin-bottom:20px; line-height:1.3;"></h2>
+      <p id="update-body" style="font-size:15px; color:var(--text-soft); line-height:1.8; margin-bottom:48px; max-width:320px;"></p>
+      <div style="width:40px; height:1px; background:var(--border); margin:0 auto 32px;"></div>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:32px; letter-spacing:0.5px;">Your entries are safe. Your pattern continues.</p>
+      <button onclick="dismissUpdate()" style="background:transparent; border:1px solid var(--border); color:var(--warm); font-family:'DM Sans',sans-serif; font-size:12px; letter-spacing:3px; text-transform:uppercase; padding:14px 36px; border-radius:40px; cursor:pointer;">Continue →</button>
+    </div>
+  </div>
+
+  <!-- CONTEXT HINT TOOLTIP -->
+  <div id="context-hint" style="display:none; position:fixed; z-index:150; pointer-events:none;">
+    <div id="context-hint-inner" style="background:var(--surface2); border:1px solid var(--border); color:var(--warm); font-size:11px; letter-spacing:1px; padding:8px 14px; border-radius:20px; white-space:nowrap; opacity:0; transition:opacity 0.4s ease;"></div>
   </div>
 
   <!-- CHECK-IN -->
@@ -783,13 +1247,57 @@
     <button class="new-session-btn" onclick="startCheckin()">Start a new check-in</button>
   </div>
 
-  <!-- HISTORY -->
+  <!-- PATTERN -->
   <div class="screen" id="screen-history">
-    <div class="history-header">
-      <h2 class="history-title">Your pattern</h2>
-      <p class="history-sub">Every check-in, remembered.</p>
+
+    <!-- Clean landing hero -->
+    <div class="pattern-hero">
+      <p class="pattern-eyebrow">Your pattern</p>
+      <h2 class="pattern-hero-title" id="pattern-hero-title">Reading<br><em>your rhythm.</em></h2>
+      <p class="pattern-sub" id="pattern-sub"></p>
+      <div class="pattern-scroll-hint" id="pattern-scroll-hint" style="display:none;">
+        <div class="scroll-hint-line"></div>
+        <span class="scroll-hint-text">scroll to see your pattern</span>
+        <div class="scroll-hint-arrow">↓</div>
+      </div>
     </div>
-    <div id="history-list"></div>
+
+    <!-- Scroll reveal sections -->
+    <div class="pattern-reveal-wrap" id="pattern-reveal-wrap" style="display:none;">
+
+      <!-- Insights -->
+      <div class="reveal-section" id="reveal-insights">
+        <div id="pattern-insights"></div>
+      </div>
+
+      <!-- Export -->
+      <div class="reveal-section" id="reveal-export">
+        <div class="export-wrap">
+          <p class="pattern-section-label">Export your data</p>
+          <div class="export-btns">
+            <button class="export-btn" onclick="exportJSON()">
+              <span class="export-icon">{ }</span>
+              <span class="export-label">JSON</span>
+              <span class="export-sub">Raw data</span>
+            </button>
+            <button class="export-btn" onclick="exportPDF()">
+              <span class="export-icon">↓</span>
+              <span class="export-label">PDF</span>
+              <span class="export-sub">Readable</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full log -->
+      <div class="reveal-section" id="reveal-log">
+        <p class="pattern-section-label">Full log</p>
+        <div id="history-list"></div>
+        <div style="height:100px;"></div>
+      </div>
+
+    </div>
+
   </div>
 
 </div>
@@ -811,6 +1319,27 @@
 </nav>
 
 <script>
+// ── VERSION & UPDATE SYSTEM ──
+const REWIND_VERSION = '1.2.0';
+
+const UPDATES = {
+  '1.1.0': {
+    message: "I learned something new.",
+    body: "Your pattern screen now reads your rhythm — not just lists your entries. Mood trends, cycle detection, what keeps showing up in your focus. I also added export so your data is always yours to keep.",
+    newElements: [
+      { selector: '#nav-history', hint: 'Pattern screen is smarter now' }
+    ]
+  },
+  '1.2.0': {
+    message: "Something is closer now.",
+    body: "Your recent entries are just a scroll away from home. No need to navigate anywhere — when you want to read back what you wrote a few hours ago, just scroll down. Everything is still here. Nothing changed, just moved a little nearer.",
+    newElements: [
+      { selector: '#scroll-hint', hint: 'Scroll down to read recent entries' },
+      { selector: '.recent-section', hint: 'Your recent check-ins live here now' }
+    ]
+  }
+};
+
 // ── STATE ──
 let state = {
   mood: null,
@@ -850,6 +1379,15 @@ function getDaysSince(dateStr) {
 // ── INIT ──
 function init() {
   loadSessions();
+
+  // Check for update
+  const seenVersion = localStorage.getItem('rewind_seen_version') || '1.0.0';
+  if (seenVersion !== REWIND_VERSION) {
+    const update = UPDATES[REWIND_VERSION];
+    if (update) {
+      setTimeout(() => showUpdateCard(update), 800);
+    }
+  }
 
   // Ambient orbs
   setTimeout(() => {
@@ -900,6 +1438,7 @@ function init() {
   // Show nav after first init
   if (sessions.length > 0) {
     document.getElementById('bottom-nav').style.display = 'flex';
+    renderRecentEntries();
   }
 }
 
@@ -1070,31 +1609,390 @@ function renderReflection(session) {
   document.getElementById('reflection-title').textContent = titles[session.mood] || 'Here is where\nyou are.';
 }
 
-// ── HISTORY ──
+// ── PATTERN & INSIGHTS ──
 function renderHistory() {
   const list = document.getElementById('history-list');
+  const insights = document.getElementById('pattern-insights');
+  const sub = document.getElementById('pattern-sub');
+  const heroTitle = document.getElementById('pattern-hero-title');
+  const revealWrap = document.getElementById('pattern-reveal-wrap');
+  const scrollHint = document.getElementById('pattern-scroll-hint');
+
   if (sessions.length === 0) {
-    list.innerHTML = '<div class="empty-history">Your check-ins will appear here.<br>Each one is a data point<br>in understanding yourself.</div>';
+    insights.innerHTML = '';
+    sub.textContent = 'Your check-ins will build a picture over time.';
+    heroTitle.innerHTML = 'Nothing yet.<br><em>Begin when ready.</em>';
+    revealWrap.style.display = 'none';
+    scrollHint.style.display = 'none';
+    list.innerHTML = '';
     return;
   }
 
-  const moodIcons = { Heavy:'🌧', Tired:'🌫', Restless:'⚡', Okay:'🌤', Calm:'🌊', Alive:'✨' };
-  const reversed = [...sessions].reverse();
+  sub.textContent = `${sessions.length} check-in${sessions.length > 1 ? 's' : ''} recorded`;
+  heroTitle.innerHTML = sessions.length === 1
+    ? 'Your pattern<br><em>is beginning.</em>'
+    : 'Here is<br><em>your rhythm.</em>';
 
+  scrollHint.style.display = 'flex';
+  revealWrap.style.display = 'block';
+
+  // ── Compute insights ──
+  const moodCounts = {};
+  const moodIcons = { Heavy:'🌧', Tired:'🌫', Restless:'⚡', Okay:'🌤', Calm:'🌊', Alive:'✨' };
+  const moodOrder = ['Heavy','Tired','Restless','Okay','Calm','Alive'];
+  let totalIntensity = 0;
+  let focusEntries = sessions.filter(s => s.focus && s.focus !== 'Rest').map(s => s.focus);
+
+  sessions.forEach(s => {
+    moodCounts[s.mood] = (moodCounts[s.mood] || 0) + 1;
+    totalIntensity += s.intensity || 5;
+  });
+
+  const avgIntensity = (totalIntensity / sessions.length).toFixed(1);
+  const dominantMood = Object.entries(moodCounts).sort((a,b) => b[1]-a[1])[0];
+
+  let cycleText = '—';
+  if (sessions.length >= 3) {
+    const gaps = [];
+    for (let i = 1; i < sessions.length; i++) {
+      const diff = (new Date(sessions[i].date) - new Date(sessions[i-1].date)) / (1000*60*60*24);
+      gaps.push(diff);
+    }
+    const avgGap = gaps.reduce((a,b) => a+b, 0) / gaps.length;
+    if (avgGap < 1.5) cycleText = 'Daily rhythm';
+    else if (avgGap < 3) cycleText = `Every ~${avgGap.toFixed(1)} days`;
+    else if (avgGap < 8) cycleText = `Every ~${Math.round(avgGap)} days`;
+    else cycleText = `Every ~${Math.round(avgGap)} days`;
+  }
+
+  let focusInsight = '—';
+  if (focusEntries.length > 0) {
+    const words = focusEntries.join(' ').toLowerCase()
+      .split(/\s+/)
+      .filter(w => w.length > 3 && !['this','that','have','with','from','just','will','been','they','your','when'].includes(w));
+    const wordCount = {};
+    words.forEach(w => wordCount[w] = (wordCount[w]||0)+1);
+    const topWord = Object.entries(wordCount).sort((a,b)=>b[1]-a[1])[0];
+    focusInsight = topWord ? `"${topWord[0]}"` : `"${focusEntries[focusEntries.length-1]}"`;
+  }
+
+  let trendText = '';
+  if (sessions.length >= 6) {
+    const positiveMap = { Alive: 2, Calm: 1, Okay: 0, Restless: -0.5, Tired: -1, Heavy: -2 };
+    const firstHalf = sessions.slice(0, Math.floor(sessions.length/2));
+    const secondHalf = sessions.slice(Math.floor(sessions.length/2));
+    const avg = arr => arr.reduce((s,x) => s + (positiveMap[x.mood]||0), 0) / arr.length;
+    const diff = avg(secondHalf) - avg(firstHalf);
+    if (diff > 0.3) trendText = 'Trending lighter ↑';
+    else if (diff < -0.3) trendText = 'Trending heavier ↓';
+    else trendText = 'Holding steady →';
+  }
+
+  const maxMood = Math.max(...Object.values(moodCounts));
+
+  insights.innerHTML = `
+    <div class="insights-grid">
+      <div class="insight-card highlight">
+        <p class="insight-label">Most present mood</p>
+        <p class="insight-value">${moodIcons[dominantMood[0]]} ${dominantMood[0]}</p>
+        <p class="insight-sub">${dominantMood[1]} of ${sessions.length} check-ins</p>
+      </div>
+      <div class="insight-card">
+        <p class="insight-label">Avg intensity</p>
+        <p class="insight-value">${avgIntensity}<span style="font-size:14px;color:var(--text-muted)">/10</span></p>
+        <p class="insight-sub">${avgIntensity >= 7 ? 'Running high' : avgIntensity >= 4 ? 'Moderate load' : 'Quiet energy'}</p>
+      </div>
+      <div class="insight-card">
+        <p class="insight-label">Your rhythm</p>
+        <p class="insight-value" style="font-size:18px;">${cycleText}</p>
+        ${trendText ? `<p class="insight-sub">${trendText}</p>` : ''}
+      </div>
+      <div class="insight-card">
+        <p class="insight-label">Focus theme</p>
+        <p class="insight-value" style="font-size:18px; font-style:italic;">${focusInsight}</p>
+        <p class="insight-sub">From your entries</p>
+      </div>
+      <div class="insight-card full">
+        <p class="insight-label">Mood distribution</p>
+        ${moodOrder.filter(m => moodCounts[m]).map(m => `
+          <div class="mood-bar-row">
+            <span class="mood-bar-label">${moodIcons[m]} ${m}</span>
+            <div class="mood-bar-track">
+              <div class="mood-bar-fill" style="width:${(moodCounts[m]/maxMood*100)}%"></div>
+            </div>
+            <span class="mood-bar-count">${moodCounts[m]}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+
+  // ── Full log ──
+  const moodIconsMap = { Heavy:'🌧', Tired:'🌫', Restless:'⚡', Okay:'🌤', Calm:'🌊', Alive:'✨' };
+  const reversed = [...sessions].reverse();
   list.innerHTML = reversed.map(s => {
     const d = new Date(s.date);
     const dateStr = d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
     const timeStr = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
-    const icon = moodIcons[s.mood] || '○';
+    const icon = moodIconsMap[s.mood] || '○';
     return `
       <div class="history-entry">
         <p class="history-date">${dateStr}  ·  ${timeStr}</p>
         <p class="history-mood">${icon} ${s.mood} · ${s.intensity}/10</p>
         ${s.focus ? `<p class="history-focus">"${s.focus}"</p>` : ''}
-        ${s.feeling ? `<p class="history-feeling">${s.feeling.substring(0, 120)}${s.feeling.length > 120 ? '...' : ''}</p>` : ''}
+        ${s.feeling ? `<p class="history-feeling">${s.feeling.substring(0, 140)}${s.feeling.length > 140 ? '...' : ''}</p>` : ''}
       </div>
     `;
   }).join('');
+
+  // Trigger scroll reveal after render
+  setTimeout(() => initScrollReveal(), 100);
+}
+
+// ── SCROLL REVEAL ──
+function initScrollReveal() {
+  const sections = document.querySelectorAll('#screen-history .reveal-section');
+  if (!sections.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: document.getElementById('screen-history'),
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  sections.forEach((s, i) => {
+    s.style.transitionDelay = `${i * 0.1}s`;
+    observer.observe(s);
+  });
+}
+
+// ── EXPORT JSON ──
+function exportJSON() {
+  const data = {
+    exported: new Date().toISOString(),
+    app: 'Rewind',
+    version: '1.2.0',
+    totalSessions: sessions.length,
+    sessions: sessions
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `rewind-export-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('JSON downloaded');
+}
+
+// ── EXPORT PDF (as printable HTML) ──
+function exportPDF() {
+  const moodIcons = { Heavy:'🌧', Tired:'🌫', Restless:'⚡', Okay:'🌤', Calm:'🌊', Alive:'✨' };
+  const rows = [...sessions].reverse().map(s => {
+    const d = new Date(s.date);
+    const dateStr = d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    const timeStr = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    const icon = moodIcons[s.mood] || '';
+    return `
+      <div style="border:1px solid #e0d5cd; border-radius:10px; padding:18px 22px; margin-bottom:14px; page-break-inside:avoid;">
+        <p style="font-size:11px; color:#9a8878; letter-spacing:1px; margin-bottom:8px; text-transform:uppercase;">${dateStr} · ${timeStr}</p>
+        <p style="font-size:18px; color:#2c2520; margin-bottom:6px;">${icon} ${s.mood} · ${s.intensity}/10</p>
+        ${s.focus ? `<p style="font-family:Georgia; font-size:16px; color:#8b6f5e; font-style:italic; margin-bottom:6px;">"${s.focus}"</p>` : ''}
+        ${s.feeling ? `<p style="font-size:14px; color:#5a4e45; line-height:1.6;">${s.feeling}</p>` : ''}
+      </div>
+    `;
+  }).join('');
+
+  const moodCounts = {};
+  sessions.forEach(s => moodCounts[s.mood] = (moodCounts[s.mood]||0)+1);
+  const dominant = Object.entries(moodCounts).sort((a,b)=>b[1]-a[1])[0];
+
+  const html = `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Rewind — My Journal</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 680px; margin: 0 auto; padding: 40px 24px; background: #faf7f4; color: #2c2520; }
+  h1 { font-family: Georgia; font-weight: 300; font-size: 42px; color: #8b6f5e; letter-spacing: 6px; margin-bottom: 4px; }
+  .meta { font-size: 13px; color: #9a8878; margin-bottom: 8px; }
+  .summary { background: #f0e8e0; border-radius: 10px; padding: 16px 20px; margin: 24px 0 32px; }
+  .summary p { font-size: 14px; color: #5a4e45; margin-bottom: 4px; }
+  @media print { body { background: white; } }
+</style>
+</head>
+<body>
+  <h1>REWIND</h1>
+  <p class="meta">Exported ${new Date().toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'})}</p>
+  <div class="summary">
+    <p><strong>${sessions.length}</strong> check-ins recorded</p>
+    <p>Most present mood: <strong>${dominant ? dominant[0] : '—'}</strong></p>
+    <p>First entry: ${new Date(sessions[0]?.date).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}</p>
+  </div>
+  ${rows}
+  <p style="text-align:center; font-family:Georgia; font-style:italic; color:#9a8878; margin-top:40px; font-size:14px;">— return to yourself —</p>
+</body>
+</html>`;
+
+  const blob = new Blob([html], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const win = window.open(url, '_blank');
+  if (win) {
+    win.onload = () => { win.print(); };
+  }
+  showToast('PDF ready — print to save');
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  let toast = document.getElementById('toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toast';
+    toast.className = 'toast';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2800);
+}
+
+// ── UPDATE CARD ──
+function showUpdateCard(update) {
+  const overlay = document.getElementById('update-overlay');
+  const inner = document.getElementById('update-card-inner');
+  document.getElementById('update-message').textContent = update.message;
+  document.getElementById('update-body').textContent = update.body;
+  overlay.style.display = 'flex';
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      inner.style.opacity = '1';
+      inner.style.transform = 'translateY(0)';
+    });
+  });
+}
+
+function dismissUpdate() {
+  const overlay = document.getElementById('update-overlay');
+  const inner = document.getElementById('update-card-inner');
+  inner.style.opacity = '0';
+  inner.style.transform = 'translateY(-12px)';
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    localStorage.setItem('rewind_seen_version', REWIND_VERSION);
+    // Show context hints after dismissing
+    const update = UPDATES[REWIND_VERSION];
+    if (update && update.newElements) {
+      showContextHints(update.newElements);
+    }
+  }, 500);
+}
+
+// ── CONTEXT HINTS ──
+function showContextHints(elements) {
+  const seenHints = JSON.parse(localStorage.getItem('rewind_seen_hints') || '[]');
+  elements.forEach((el, i) => {
+    if (seenHints.includes(el.selector)) return;
+    setTimeout(() => {
+      const target = document.querySelector(el.selector);
+      if (!target) return;
+      // Add pulse glow
+      target.classList.add('new-pulse');
+      // Show floating hint
+      showFloatingHint(target, el.hint);
+      // Mark as seen after interaction
+      const markSeen = () => {
+        target.classList.remove('new-pulse');
+        seenHints.push(el.selector);
+        localStorage.setItem('rewind_seen_hints', JSON.stringify(seenHints));
+        target.removeEventListener('click', markSeen);
+        target.removeEventListener('touchstart', markSeen);
+      };
+      target.addEventListener('click', markSeen);
+      target.addEventListener('touchstart', markSeen);
+    }, i * 600);
+  });
+}
+
+function showFloatingHint(target, text) {
+  const hint = document.getElementById('context-hint');
+  const inner = document.getElementById('context-hint-inner');
+  const rect = target.getBoundingClientRect();
+  inner.textContent = text;
+  hint.style.display = 'block';
+  hint.style.left = '50%';
+  hint.style.top = (rect.top - 44) + 'px';
+  hint.style.transform = 'translateX(-50%)';
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => { inner.style.opacity = '1'; });
+  });
+  setTimeout(() => {
+    inner.style.opacity = '0';
+    setTimeout(() => { hint.style.display = 'none'; }, 400);
+  }, 3000);
+}
+
+// ── RECENT ENTRIES ON WELCOME ──
+function renderRecentEntries() {
+  if (sessions.length === 0) return;
+
+  const moodIcons = { Heavy:'🌧', Tired:'🌫', Restless:'⚡', Okay:'🌤', Calm:'🌊', Alive:'✨' };
+  const recentSection = document.getElementById('recent-section');
+  const recentEntries = document.getElementById('recent-entries');
+  const scrollHint = document.getElementById('scroll-hint');
+
+  recentSection.style.display = 'block';
+  scrollHint.style.display = 'flex';
+
+  // Show last 5 entries most recent first
+  const recent = [...sessions].reverse().slice(0, 5);
+
+  recentEntries.innerHTML = recent.map((s, i) => {
+    const d = new Date(s.date);
+    const now = new Date();
+    const diffMs = now - d;
+    const diffHrs = diffMs / (1000 * 60 * 60);
+    const diffDays = diffMs / (1000 * 60 * 60 * 24);
+
+    let timeLabel = '';
+    if (diffHrs < 1) timeLabel = 'Just now';
+    else if (diffHrs < 2) timeLabel = '1 hour ago';
+    else if (diffHrs < 24) timeLabel = `${Math.floor(diffHrs)} hours ago`;
+    else if (diffDays < 2) timeLabel = 'Yesterday';
+    else timeLabel = d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+
+    const icon = moodIcons[s.mood] || '○';
+
+    return `
+      <div class="recent-entry">
+        <p class="recent-entry-time">${timeLabel}</p>
+        <div class="recent-entry-mood">
+          <span class="recent-mood-icon">${icon}</span>
+          <span class="recent-mood-name">${s.mood}</span>
+          <span class="recent-mood-intensity">${s.intensity}/10</span>
+        </div>
+        ${s.feeling ? `<p class="recent-entry-feeling">${s.feeling}</p>` : ''}
+        ${s.focus && s.focus !== 'Rest' ? `<p class="recent-entry-focus">Focus — <span>${s.focus}</span></p>` : ''}
+        ${s.focus === 'Rest' ? `<p class="recent-entry-focus" style="color:var(--text-muted);">Rest was the focus</p>` : ''}
+      </div>
+    `;
+  }).join('');
+
+  // Show "see all" link if more than 5 entries
+  if (sessions.length > 5) {
+    recentEntries.innerHTML += `
+      <div class="recent-divider" onclick="navigate('history')">
+        + ${sessions.length - 5} more entries — see full pattern
+      </div>
+    `;
+  }
 }
 
 // Start
